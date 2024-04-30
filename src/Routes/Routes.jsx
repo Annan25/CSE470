@@ -11,6 +11,9 @@ import CarDealership from "../Pages/CarDealership/CarDealership";
 import CarDealershipDetails from "../Pages/CarDealership/CarDealershipDetails";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Payment from "../Pages/More/Payment/Payment";
+import Orders from "../Pages/ForAdmin/Orders/Orders";
+import SellingCars from "../Pages/ForAdmin/SellingCars/SellingCars";
+import SellingParts from "../Pages/ForAdmin/SellingParts/SellingParts";
 
  export const router = createBrowserRouter([
     {
@@ -50,9 +53,28 @@ import Payment from "../Pages/More/Payment/Payment";
           loader: ({params}) =>  fetch(`http://localhost:5000/sellingCars/${params.carId}`),
         },
         {
+          path: "Orders",
+          element: <PrivateRoute><Orders></Orders></PrivateRoute>,
+          loader: () =>  fetch("http://localhost:5000/orders"),
+        },
+        {
+          path: "SellingCars",
+          element: <PrivateRoute> <SellingCars></SellingCars> </PrivateRoute>,
+           loader: () =>  fetch("http://localhost:5000/sellingCars"),
+        },
+        {
+          path: "SellingParts",
+          element: <PrivateRoute> <SellingParts></SellingParts> </PrivateRoute>,
+          loader: () =>  fetch("http://localhost:5000/carParts"),
+        },
+        {
           path: 'Payment',
           element: <PrivateRoute><Payment></Payment></PrivateRoute>,
         },
+        {
+          path: 'dashboard',
+          element: <Register></Register>,
+        }
       ]
     },
   ]);
