@@ -9,6 +9,8 @@ import CarParts from "../Pages/CarParts/CarParts";
 import RentalSystem from "../Pages/RentalSystem/RentalSystem";
 import CarDealership from "../Pages/CarDealership/CarDealership";
 import CarDealershipDetails from "../Pages/CarDealership/CarDealershipDetails";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Payment from "../Pages/More/Payment/Payment";
 
  export const router = createBrowserRouter([
     {
@@ -46,6 +48,10 @@ import CarDealershipDetails from "../Pages/CarDealership/CarDealershipDetails";
           path: "cars/:carId",
           element: <CarDealershipDetails></CarDealershipDetails>,
           loader: ({params}) =>  fetch(`http://localhost:5000/sellingCars/${params.carId}`),
+        },
+        {
+          path: 'Payment',
+          element: <PrivateRoute><Payment></Payment></PrivateRoute>,
         },
       ]
     },
